@@ -10,10 +10,10 @@ class OgreRoom
     puts "an overwhelming stench causing you to gag."
     puts "You can't see any doors based on your first observation, "
     puts "but you see a dark mound against one of the walls."
-    get_movement
+    get_action
   end
 
-  def get_movement
+  def get_action
     choice = Game.get_input
     
     if choice.include?("search") && !@sword
