@@ -9,6 +9,9 @@ class SilverfishRoom
 
   def initialize
     @score = 0
+  end
+
+  def play
     describe
     mine
   end
