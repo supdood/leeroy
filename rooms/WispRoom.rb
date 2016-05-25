@@ -21,7 +21,7 @@ class Wisp
   end
 end
 
-class Room
+class WispRoom
 
   def initialize
       #2-7 wisps

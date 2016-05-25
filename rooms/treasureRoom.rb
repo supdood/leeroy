@@ -1,5 +1,3 @@
-require './endRoom'
-
 class TreasureRoom
    
     def initialize()
