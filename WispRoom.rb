@@ -1,31 +1,3 @@
-class Game
-
-  def self.get_input
-    print "Action: "
-    return $stdin.gets.chomp
-  end
-
-  def clear_screen
-    puts "\e[H\e[2J"
-  end
-
-  def died
-    puts "You died. Game over"
-  end
-
-  def start_message
-    puts "Welcome to the wisp fighting game"
-  end
-
-  def initialize
-    start_message
-    room = Room.new
-    room.play
-  end
-
-
-end
-
 class Wisp
   def initialize
     @state = "Not implemented"
@@ -133,6 +105,3 @@ class Room
     puts "Available actions: fight, disturb, leave"
   end
 end
-
-
-Game.new
