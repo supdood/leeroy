@@ -4,7 +4,14 @@ class TreasureRoom
    
     def initialize()
         @treasure_room_key = false
-        describe
+        @keep_going = true
+    end
+    
+    def play
+        while @keep_going
+            describe
+            get_action
+        end
     end
     
     def describe
@@ -14,7 +21,6 @@ class TreasureRoom
         puts "You notice what appears to be a large treasure chest with golden"
         puts "accents, a large wooden door, a large golden vase adorned with gems,"
         puts "and a small, torn-up, dingy-looking cupboard in the corner.\n\n"
-        get_action
     end
     
     def get_action
@@ -28,22 +34,18 @@ class TreasureRoom
             search_action
         elsif choice.include?("look")
             puts "Sure, I can describe the room again for you... pay close attention.\n\n"
-            describe
         elsif choice.include?("eat")
             puts "There is nothing to eat here, dude\n\n"
-            describe
         elsif choice.include?("door") && !@treasure_room_key
             puts "The door is LOCKED!\n\n"
-            describe
         elsif choice.include?("door") && @treasure_room_key
             puts "The tumblers fall into place and the door swings open!"
             puts "You step into the next room...\n\n"
-            EndRoom.new
+            @keep_going = false
         elsif choice.include?("die")
             Game.you_died("WTF, dude?")
         else
             puts "Sorry, I have no idea what you're talking about. Maybe try rephrasing?\n\n"
-            describe
         end
     end
     
@@ -70,14 +72,11 @@ class TreasureRoom
             puts "find a small silver key."
             puts "I wonder what this is for.\n\n"
             @treasure_room_key = true
-            describe
         elsif choice.include?("cupboard") && @treasure_room_key
             puts "You have already found a key in this cupboard.  There is nothing"
             puts "else of interest.\n\n"
-            describe
         else
             puts "Sorry, I have no idea what you're talking about. Maybe try rephrasing?\n\n"
-            describe
         end
     end
     

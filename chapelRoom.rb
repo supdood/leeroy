@@ -2,7 +2,14 @@ class ChapelRoom
    
     def initialize()
         @reward = false
-        describe
+        @keep_going = true
+    end
+    
+    def play
+        while @keep_going
+            describe
+            get_action
+        end
     end
     
     def describe
@@ -10,8 +17,7 @@ class ChapelRoom
         puts "just the basic features of the room. Upon closer inspection, you"
         puts "realize this room is a small chapel. In the dark corner of the room"
         puts "you notice as shadow figure as the sound of wimpering.  In the other"
-        puts "corner, you notice a door lying half open leading to what appear to"
-        puts "be the outside.\n\n"
+        puts "corner, you notice a door lying half open.\n\n"
         get_action
     end
     
@@ -25,27 +31,20 @@ class ChapelRoom
             search_action
         elsif choice.include?("search") && @reward
             puts "There is nothing else of interest to search. \n\n"
-            describe
         elsif choice.include?("look")
             puts "Sure, I can describe the room again for you... pay close attention.\n\n"
-            describe
         elsif choice.include?("eat")
             puts "There is nothing to eat here, dude\n\n"
-            describe
         elsif choice.include?("door") && !@reward
-            puts "You walk out the door, stepping into the freedom of the outside world."
-            puts "You may not have found the chicken you were seeking, but at least you"
-            puts "made it out with your life.\n\n"
+            puts "You step into the next room...\n\n"
+            @keep_going = false
         elsif choice.include?("door") && @reward
-            puts "You walk out the door, stepping into the freedom of the outside world."
-            puts "You may not have found the chicken you were seeking, but you aquired"
-            puts "something even better, the Devout Shoulders of the gods!"
-            puts "YOU WIN THE GAME.\n\n"
+            puts "You step into the next room...\n\n"
+            @keep_going = false
         elsif choice.include?("die")
             Game.you_died("WTF, dude?")
         else
             puts "Sorry, I have no idea what you're talking about. Maybe try rephrasing?\n\n"
-            describe
         end
     end
     
@@ -58,13 +57,10 @@ class ChapelRoom
             puts 'this as a reward".  The old man hands you the legendary Devout Shoulders of'
             puts "the gods.\n\n"
             @reward = true;
-            describe
         elsif choice.include?("no")
             puts "You ignore the shadowy figure.\n\n"
-            describe
         else
             puts "Sorry, I have no idea what you're talking about. Maybe try rephrasing?\n\n"
-            describe
         end
     end
     
