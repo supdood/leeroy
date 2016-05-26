@@ -18,7 +18,6 @@ class ChapelRoom
         puts "realize this room is a small chapel. In the dark corner of the room"
         puts "you notice as shadow figure as the sound of wimpering.  In the other"
         puts "corner, you notice a door lying half open.\n\n"
-        get_action
     end
     
     def get_action
@@ -35,11 +34,7 @@ class ChapelRoom
             puts "Sure, I can describe the room again for you... pay close attention.\n\n"
         elsif choice.include?("eat")
             puts "There is nothing to eat here, dude\n\n"
-        elsif choice.include?("door") && !@reward
-            puts "You step into the next room...\n\n"
-            @keep_going = false
-        elsif choice.include?("door") && @reward
-            puts "You step into the next room...\n\n"
+        elsif choice.include?("door")
             @keep_going = false
         elsif choice.include?("die")
             Game.you_died("WTF, dude?")
