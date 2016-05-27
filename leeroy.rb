@@ -34,5 +34,3 @@ class Game
     true
   end
 end
-
-Game.new
